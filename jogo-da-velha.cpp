@@ -1,6 +1,8 @@
 #include <iostream>
 
 using namespace std;
+
+//Função para exibir o tabuleiro
 void exibirTabuleiro(char matriz[3][3]){
     for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
@@ -15,6 +17,8 @@ void exibirTabuleiro(char matriz[3][3]){
         }
     }
 }
+//Função para verificar se houve vitória ou empate
+// Retorna 0 se houver vitória, 1 se não houver vitória e 2 se houver empate
 int verificarVitoria(char matriz[3][3]){
     
     for(int i = 0; i < 3; i++){
@@ -77,6 +81,8 @@ int verificarVitoria(char matriz[3][3]){
     return 1;
     
 }
+//Função para verificar se houve empate
+// Retorna true se houver empate, false se não houver empate
 bool verificarEmpate(char matriz[3][3]){
     int aux = 0;
     for(int i = 0; i < 3; i++){
