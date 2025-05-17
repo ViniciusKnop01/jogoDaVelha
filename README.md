@@ -2,7 +2,7 @@
 This repository is going to be used for storing a project in C++: "Jogo da Velha".
 
 ## Overview
-This project is a from a [challenge](https://neps.academy) at a programming course at [Neps Acedemy](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiGh5un-5GNAxU5r5UCHROSGlAQFnoECAsQAQ&url=https%3A%2F%2Fneps.academy%2F&usg=AOvVaw1Y8_54ePaMTMekuMc04CMs&opi=89978449). 
+This project is a from a [challenge](https://neps.academy/br/project/22) at a programming course at [Neps Acedemy](https://neps.academy/br/login). 
 
 This is a two-player game, in text mode, in which participants take turns marking spots on a 3x3 grid until one of them wins or a draw occurs.
 
@@ -17,12 +17,31 @@ This is a two-player game, in text mode, in which participants take turns markin
 ### Problems and Solutions
 
 1. **Displaying the Game Board**  
-   - **Problem**: How to visually represent the game board in a clear and readable format.  
-   - **Solution**: The `exibirTabuleiro` function iterates through the 3x3 matrix and prints the board with grid lines for clarity.
+   - **Solution**: I found it easier to just display the board as a 3x3 matrix, and add a function to display the updated one (with the moves in it). It was hard figuring the exact format, but in the end we figured out the solution:
+
+   ```cpp
+   void exibirTabuleiro (char matriz[3][3]) {
+    for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+               if (j == 2) cout << " " << matriz[i][j] << " ";
+               else { 
+                  cout << " " << matriz[i][j] << " " << "|";
+               }
+            }
+
+            if (i != 2) {
+               
+            cout << endl;
+            cout << "-----------" << endl;
+        }
+    }
+   }
+   ```
 
 2. **Checking for Victory**  
    - **Problem**: How to determine if a player has won the game.  
-   - **Solution**: The `verificarVitoria` function checks all rows, columns, and diagonals for three consecutive marks ('X' or 'O') and announces the winner.
+   - **Solution**: The ``verificarVitoria`` function is responsible for determining whether a player won the match. It checks all rows, columns and diagonals of the board to identify three identical symbols in a row. If a win condition is met, the function returns true; otherwise, returns false.
+
 
 3. **Checking for a Draw**  
    - **Problem**: How to detect when the game ends in a draw.  
