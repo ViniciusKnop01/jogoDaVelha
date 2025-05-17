@@ -1,74 +1,72 @@
 # jogoDaVelha
-This repository is going to be used for storing a project in C++: "Jogo da Velha".
+Este repositório será utilizado para armazenar um projeto em C++: "Jogo da Velha".
 
-## Overview
-This project is a from a [challenge](https://neps.academy/br/project/22) at a programming course at [Neps Acedemy](https://neps.academy/br/login). 
+## Visão Geral
+Este projeto faz parte de um [desafio](https://neps.academy/br/project/22) de um curso de programação da [Neps Academy](https://neps.academy/br/login).
 
-This is a two-player game, in text mode, in which participants take turns marking spots on a 3x3 grid until one of them wins or a draw occurs.
+Este é um jogo para dois jogadores, para ser jogado no terminal, no qual os participantes se revezam marcando posições em uma grade 3x3 até que um deles vença ou ocorra um empate.
 
-## How to play
-1. Player 1 uses "X" and Player 2 uses "O".
-2. Players take turns selecting an empty cell on the grid.
-3. The game ends when one player aligns three marks or when all cells are filled without a winner.
+## Como jogar
+1. O Jogador 1 usa "X" e o Jogador 2 usa "O".
+2. Os jogadores se revezam escolhendo uma célula vazia no tabuleiro.
+3. O jogo termina quando um jogador alinha três símbolos ou quando todas as células são preenchidas sem que haja um vencedor.
 
-## How did I do it?
+## Como eu fiz?
 
 
-### Problems and Solutions
+### Problemas e Soluções
 
-1. **Displaying the Game Board**  
-   - **Solution**: I found it easier to just display the board as a 3x3 matrix, and add a function to display the updated one (with the moves in it). It was hard figuring the exact format, but in the end we figured out the solution:
+1. **Exibir o Tabuleiro**  
+   - **Solução**: Achei mais fácil exibir o tabuleiro como uma matriz 3x3 e criar uma função para mostrar a versão atualizada (com as jogadas feitas). Foi difícil encontrar o formato exato, mas no final conseguimos chegar a uma boa solução:
 
    ```cpp
    void exibirTabuleiro (char matriz[3][3]) {
-    for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+       for (int i = 0; i < 3; i++) {
+           for (int j = 0; j < 3; j++) {
                if (j == 2) cout << " " << matriz[i][j] << " ";
                else { 
-                  cout << " " << matriz[i][j] << " " << "|";
+                   cout << " " << matriz[i][j] << " " << "|";
                }
-            }
+           }
 
-            if (i != 2) {
-               
-            cout << endl;
-            cout << "-----------" << endl;
-        }
-    }
+           if (i != 2) {
+               cout << endl;
+               cout << "-----------" << endl;
+           }
+       }
    }
-   ```
-
-2. **Checking for Victory**  
-   - **Problem**: How to determine if a player has won the game.  
-   - **Solution**: The ``verificarVitoria`` function is responsible for determining whether a player won the match. It checks all rows, columns and diagonals of the board to identify three identical symbols in a row. If a win condition is met, the function returns true; otherwise, returns false.
 
 
-3. **Checking for a Draw**  
-   - **Problem**: How to detect when the game ends in a draw.  
-   - **Solution**: The `verificarEmpate` function counts the filled cells in the matrix. If all cells are filled and no winner is found, it declares a draw.
+2. **Verificação de Vitória**  
+   - **Problema**: Como determinar se um jogador venceu o jogo.  
+   - **Solução**: A função `verificarVitoria` é responsável por identificar se um jogador venceu a partida. Ela verifica todas as linhas, colunas e diagonais do tabuleiro para encontrar três símbolos iguais em sequência. Se uma condição de vitória for atendida, a função retorna verdadeiro; caso contrário, retorna falso.
 
+3. **Verificação de Empate**  
+   - **Problema**: Como detectar quando o jogo termina em empate.  
+   - **Solução**: A função `verificarEmpate` conta as células preenchidas na matriz. Se todas as células estiverem preenchidas e nenhum vencedor for encontrado, ela declara um empate.
 
-5. **Game Loop and Restart**  
-   - **Problem**: How to manage the game flow, including turns and restarting the game.  
-   - **Solution**: The `main` function handles the game loop, alternating turns between players, checking for victory or draw, and resetting the board if players choose to restart.
+5. **Loop do Jogo e Reinício**  
+   - **Problema**: Como gerenciar o fluxo do jogo, incluindo as jogadas e o reinício do jogo.  
+   - **Solução**: A função `main` controla o loop do jogo, alternando os turnos entre os jogadores, verificando se houve vitória ou empate, e reiniciando o tabuleiro se os jogadores optarem por jogar novamente.
 
 ---
 
-### Functions Overview
+### Visão Geral das Funções
 
 #### `exibirTabuleiro(char matriz[3][3])`
-Displays the current state of the game board in a grid format.
+Exibe o estado atual do tabuleiro no formato de grade.
 
 #### `verificarVitoria(char matriz[3][3])`
-Checks if any player has won by analyzing rows, columns, and diagonals. Announces the winner if a victory condition is met.
+Verifica se algum jogador venceu analisando linhas, colunas e diagonais. Informa o vencedor se uma condição de vitória for atendida.
 
 #### `verificarEmpate(char matriz[3][3])`
-Determines if the game has ended in a draw by checking if all cells are filled and no winner exists.
+Determina se o jogo terminou em empate ao verificar se todas as células estão preenchidas e nenhum vencedor foi encontrado.
 
 #### `validarJogada(int entrada, char matriz[3][3])`
-Validates the player's move to ensure it is within bounds and not already occupied.
+Valida a jogada do jogador para garantir que está dentro dos limites e que a célula escolhida não está ocupada.
 
 #### `main()`
-Manages the game loop, alternates turns between players, checks for victory or draw, and handles restarting the game.
+Gerencia o loop principal do jogo, alterna os turnos entre os jogadores, verifica por vitória ou empate e lida com o reinício da partida.
 
 ---
+
